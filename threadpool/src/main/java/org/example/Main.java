@@ -1,6 +1,7 @@
 package org.example;
 
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * 线程池
@@ -14,7 +15,8 @@ public class Main {
         ExecutorService executorService = Executors.newFixedThreadPool(1);
 
         // 线程池的7个参数
-        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 4, 1000, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(2), new ThreadFactory() {
+        ThreadPoolExecutor threadPoolExecutor = new ThreadPoolExecutor(2, 4, 1000,
+                TimeUnit.MILLISECONDS, new ArrayBlockingQueue<Runnable>(2), new ThreadFactory() {
             public Thread newThread(Runnable r) {
                 Thread t = new Thread(r);
                 t.setName("abc");
@@ -38,5 +40,7 @@ public class Main {
          */
 
         threadPoolExecutor.execute();
+        Object o = new Object();
+        System.out.println();
     }
 }
